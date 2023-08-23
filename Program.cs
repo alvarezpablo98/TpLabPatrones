@@ -1,4 +1,13 @@
+using Factory_Method.Repository;
+using static Factory_Method.DroneAll;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Agrega la implementación de IRepository como Singleton
+builder.Services.AddSingleton<IDroneService, DroneService>();
+
+// Agrega la configuración de DroneServiceFactory con la inyección de IRepository
+builder.Services.AddSingleton<DroneServiceFactory>();
 
 // Add services to the container.
 
